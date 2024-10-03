@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="cordova-plugin-faceid"
+    version="1.0.1">
+
+    <name>FaceID</name>
+    <description>A cordova plugin, a JS version of FaceID SDK</description>
+    <license>MIT</license>
+    <keywords>cordova,faceid</keywords>
+
+    <!-- js module-->
+    <js-module src="www/faceid.js" name="FaceID">
+        <clobbers target="FaceID" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="FaceID">
+                <param name="android-package" value="xu.li.cordova.faceid.FaceID"/>
+            </feature>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+
+
+        <source-file src="src/android/FaceID.java" target-dir="src/xu/li/cordova/faceid" />
+        <source-file src="src/android/licensemanager-v1.1.jar" target-dir="libs" />
+        <framework src="src/android/IDCardLib" custom="true" />
+        <framework src="src/android/livenesslib" custom="true" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="FaceID">
+                <param name="ios-package" value="CDVFaceID"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
+            <string>身份证检测需要相机权限</string>
+        </config-file>
+
+
+        <!-- Plugin source code -->
+        <header-file src="src/ios/CDVFaceID.h" />
+        <source-file src="src/ios/CDVFaceID.m" />
+
+        <!-- Plugin resources -->
+        <resource-file src="src/ios/MGIDCardResource.bundle" />
+        <resource-file src="src/ios/MGLiveResource.bundle" />
+
+        <!-- Sub projects -->
+        <framework src="src/ios/MGBaseKit.framework" custom="true" />
+        <framework src="src/ios/MGIDCard.framework" custom="true" />
+        <framework src="src/ios/MGLivenessDetection.framework" custom="true" />
+
+        <!-- Other required frameworks -->
+        <framework src="AVFoundation.framework" />
+        <framework src="CoreMedia.framework" />
+        <framework src="libc++.tbd" />
+    </platform>
+</plugin>

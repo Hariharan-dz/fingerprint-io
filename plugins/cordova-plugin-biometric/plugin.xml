@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-biometric" version="0.0.3">
+  <name>Biometric</name>
+  <description>
+    Scan the fingerprint of your user with the TouchID sensor, or the user's Face with Face ID on iPhone X
+  </description>
+  <author>Coder</author>
+  <license>MIT</license>
+  <keywords>TouchID,Touch ID,Face ID,iPhone X,Fingerprint,Biometric,Scanner</keywords>
+  <engines>
+    <engine name="cordova" version=">=3.0.0" />
+  </engines>
+  <js-module src="www/Biometric.js" name="Biometric">
+    <clobbers target="window.plugins.biometric" />
+  </js-module>
+  <!-- ios -->
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="Biometric">
+        <param name="ios-package" value="Biometric" />
+      </feature>
+    </config-file>
+    <!-- Usage description of Face ID for iOS 11+ -->
+    <preference name="FACEID_USAGE_DESCRIPTION" default=" " />
+    <config-file target="*-Info.plist" parent="NSFaceIDUsageDescription">
+      <string>$FACEID_USAGE_DESCRIPTION</string>
+    </config-file>
+    <framework src="LocalAuthentication.framework" />
+    <framework src="Security.framework" />
+    <header-file src="src/ios/Biometric.h" />
+    <source-file src="src/ios/Biometric.m" />
+  </platform>
+</plugin>
