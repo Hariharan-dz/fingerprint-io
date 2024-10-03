@@ -1,0 +1,199 @@
+@import '../../theme/form.scss';
+
+ion-header {
+  ion-toolbar {
+    padding: 12px;
+    --background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+    border-bottom: 3px solid var(--ion-txt-color-W);
+
+    ion-icon {
+      font-size: 30px;
+      color: var(--ion-txt-color-W);
+    }
+
+    ion-label {
+      color: var(--ion-txt-color-W);
+      font-size: 24px;
+      font-family: sans-serif;
+    }
+  }
+}
+
+ion-content {
+
+  .student-details-wrapper {
+    .student-details-outside-wrap {
+      .heading-txt {
+        font-size: 26px;
+        font-weight: 600;
+        margin: 0px 12px 0px 16px;
+        font-family: math !important;
+      }
+    }
+
+    .student-details-form-wrap {
+      height: calc(100vh - 300px);
+      overflow: auto;
+      min-height: 315px;
+      margin: 0px 16px 16px 16px;
+      border-top: var(--ion-primary-color) 5px solid;
+      border-radius: 0px 0px 10px 10px;
+    }
+  }
+
+  .heading-txt-voice-btn {
+    display: flex;
+    align-items: center;
+
+    .voice-enable-btn {
+      --background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+    }
+  }
+
+  state-stepper {
+    state-stepper-step {
+      --size: 60px;
+      --color-active: var(--ion-primary-color);
+      --color-success: var(--ion-secondary-color);
+      --color-active-contrast: var(--ion-txt-color-W);
+    }
+
+    ion-icon {
+      --color: var(--ion-txt-color-W);
+    }
+  }
+
+}
+
+ion-footer {
+  ion-toolbar {
+    padding: 9px;
+
+    .nxt-btns-wrap {
+      .nxt-btns {
+        --background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+
+        .nxt-label,
+        ion-icon {
+          color: var(--ion-txt-color-W);
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .back-button {
+      --color: var(--ion-primary-color);
+      --background-activated: var(--ion-secondary-color);
+    }
+
+    .back-label,
+    .nxt-label {
+      font-size: 18px;
+      text-transform: capitalize;
+    }
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .screen-scroll {
+    --overflow: hidden;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .screen-scroll {
+    --overflow: hidden;
+  }
+
+  .tac-footer.ios {
+    background: #fff;
+    position: fixed;
+    width: 90%;
+    padding: 12px 0 9px 0px;
+    top: 580px !important;
+    height: 83px;
+  }
+}
+
+ion-modal {
+  --height: 100%;
+  --width: 100%;
+  margin-top: 60px;
+}
+
+.modal-ion-contant {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-modal::part(backdrop) {
+  background: rgba(209, 213, 219);
+  opacity: 1;
+}
+
+.ion-content-modal-popup {
+  .center-z {
+    display: flex;
+    justify-content: center;
+  }
+
+  ion-button {
+    --background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+    border-bottom: 3px solid var(--ion-txt-color-W);
+    --background-activated: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+    border-bottom: 3px solid var(--ion-txt-color-W);
+    --border-radius: 40px;
+    text-transform: capitalize;
+  }
+
+  .row-wrapper {
+    margin: 10% 0px;
+  }
+}
+
+.last-page {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  .last-page-card {
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--ion-primary-color);
+
+    .password-pin-col {
+      margin-top: 32px;
+  
+      ion-label {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--ion-txt-color-B);
+      }
+    }
+  
+    .pin-nr-wrapper {
+      margin-bottom: 10px;
+  
+      .pin-number {
+        width: 100px;
+        font-size: 18px;
+        font-weight: 700;
+        margin-right: 10px;
+        display: inline-block;
+        --padding-start: 0px;
+        color: var(--ion-txt-color-B);
+        border-bottom: 2px solid var(--ion-txt-color-B);
+      }
+    }
+  
+    .password-submit-btn {
+      --background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+  
+      ion-label {
+        padding: 0px 72px;
+        font-size: 16px;
+      }
+    }
+  }
+  }

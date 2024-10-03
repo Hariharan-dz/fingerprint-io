@@ -1,0 +1,249 @@
+<div style="padding:0px 5px">
+  <ng-template #formDetails let-view="view">
+    <!-- student personal details title -->
+    <div style="height: 16px;  margin-top: 20px;padding-left: 0px;" *ngIf="view.isDefault ">
+      <h1 style="color: #32a3b6; font-size: 18px; margin-left:0px; font-weight: 600; letter-spacing: 1px;">
+        {{view.title}}
+      </h1>
+    </div>
+    <!--  -->
+    <div *ngFor="let data of view.dataList; let i=index;" style="padding: 2px 0px 0px 0px;">
+      <!-- sub-title like (sibling 1) -->
+      <div *ngIf="view.subTitle" style="margin-bottom: 8px;">
+        <p style="left: 5px;top: 4px;color: #808080;font-size: 16px;margin-top: 12px;
+        margin-bottom: 12px;
+    ">
+          {{view.subTitle}} - {{i+1}}
+        </p>
+      </div>
+      <!-- table -->
+      <div *ngIf="view.isDefault">
+        <table rules="rows"
+          style="border: 1px solid rgba(0, 0, 0, 0.237); width: 100%; margin-left: 2px; margin-top: 14px;">
+          <tr *ngFor="let view of view.fields">
+            <td style="border: 1px solid black; padding: 5px 0px 5px 12px; width: 40%;" class="key">
+              {{view.key}}</td>
+            <td style="border: 1px solid black; padding-left: 12px;">{{data[view.value_attr]}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </ng-template>
+  <div style="display: flex; flex-direction: row; padding:0px 0px 0px 5px;">
+    <!--width 20 -->
+    <div class="logo-wrapper"
+      style="width:20%; display: flex; justify-content: start; flex-direction: column; margin-top: 0px;">
+      <img [src]="logo" style="min-width: 130px;max-width: 130px;  margin: 0px auto;" />
+      <div style="text-align: center;">
+        <h3 style="text-align: center; font-family: revert; font-size: 22px; color: #1d4c9b; margin: 0px 0px 0px 0px;">
+          GENIUS
+        </h3>
+        <p style="margin: 2px 0px 0px 0px; font-size: 16px; color: #556c87; letter-spacing: 0.2px;">International School
+        </p>
+      </div>
+    </div>
+    <!--width 60 -->
+    <div style="width: 60%;" class="title-wrapper">
+      <div class="header" style="margin-top: 22px;">
+        <h1 name="title" style="font-weight: 700; text-align: center; color: black; letter-spacing: 1px; margin: 0px;">
+          GENIUS<br> INTERNATIONAL SCHOOL</h1>
+      </div>
+      <p
+        style="color: #6da8bb; text-align: center; font-size: 10.5px; line-height: 15px; margin: 0px; font-weight: 500; letter-spacing: 0.3px;">
+        Building No: 546 Moonnanakuzhi, koleri P O, Wayanad, 673596,kerala
+        <br>
+        Phone 04936298560, +91 9446060309
+        <br>
+        CBSE Affilication No. 931195
+      </p>
+      <div>
+        <p style="text-align: center; font-weight: 600; line-height: 15px; margin: 10px 0px; font-size: 12px;">
+          To be Completed by Parent/ Guardian. <br> Please use CAPTAL LETTERS to Complete the form
+        </p>
+      </div>
+    </div>
+    <!--width 20 -->
+    <div class=" photo-wrapper" style="width:20%;padding-top: 20px;text-align: center;padding-right: 3px; ">
+      <div
+        style="display: flex; justify-content: center; align-items: center; border: 1px solid gray; height: 165px; width: 93%; float: right; right: 0; ">
+        <p *ngIf="!student.photo">No photo</p>
+        <img *ngIf="student.photo" [src]="student.photo.dataUrl" alt="Photo"
+          style="height: -webkit-fill-available; width: 100%;" class="show-upload" />
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 0px 5px;">
+    <ng-template [ngTemplateOutlet]="formDetails" [ngTemplateOutletContext]="{view: view}"
+      *ngFor="let view of studentView"></ng-template>
+    <div style="height: 30px;  margin-top: 20px;padding-left: 0px;">
+      <h1 style="color: #32a3b6; font-size: 18px; margin-left:0px; font-weight: 600; letter-spacing: 1px;">
+        Emergency Contact Details
+      </h1>
+    </div>
+    <table rules="rows" style="border: 1px solid black; width: 100%; margin-left: 2px; border-collapse: collapse;     margin-top: 4px;
+    ">
+      <tr>
+        <th style="border: 1px solid black; padding: 5px 0px 5px 12px; width: 40%;"></th>
+        <th style="border: 1px solid black; padding: 5px 0px 5px 12px;     width: 20%; ">Primary</th>
+        <th style="border: 1px solid black; padding: 5px 0px 5px 12px;     width: 20%;">Secondary</th>
+        <th style="border: 1px solid black; padding: 5px 0px 5px 12px;     width: 20%;">Ternery</th>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px; width: 40%;">
+          Name
+        </td>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px; line-break: anywhere;">
+          {{student.primary_name}}
+        </td>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px; line-break: anywhere;">
+          {{student.secondary_name}}
+        </td>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px; line-break: anywhere;">
+          {{student.ternery_name}}
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px; width: 40%;">
+          Relationship to child
+        </td>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px; line-break: anywhere;">
+          {{student.primary_relation}}
+        </td>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px; line-break: anywhere;">
+          {{student.secondary_relation}}
+        </td>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px; line-break: anywhere;">
+          {{student.ternery_relation}}
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px; width: 40%; ">
+          Phone Number
+        </td>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px; line-break: anywhere;">
+          {{student.primary_phone}}
+        </td>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px; line-break: anywhere;">
+          {{student.secondary_phone}}
+        </td>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px;line-break: anywhere;">
+          {{student.ternery_phone}}
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px; width: 40%;">
+          WhatsApp Number
+        </td>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px; line-break: anywhere;">
+          {{student.primary_whatsapp}}
+        </td>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px;line-break: anywhere;">
+          {{student.secondary_whatsapp}}
+        </td>
+        <td style="border: 1px solid black; padding: 5px 0px 5px 12px;line-break: anywhere;">
+          {{student.ternery_whatsapp}}
+        </td>
+      </tr>
+    </table>
+
+    <!-- Decalration -->
+    <!-- DECLARATION personal details title -->
+    <div style="height: 30px;  margin-top: 20px;padding-left: 0px;">
+      <h1 style="color: #32a3b6; font-size: 18px; margin-left:0px; font-weight: 600; letter-spacing: 1px;">
+        DECLARATION
+      </h1>
+    </div>
+    <div>
+
+      <p
+        style="line-height: 25px;font-family: inter;font-size: 17px; color: #808080;    padding: 0px 0px 0px 0px;margin: 5px 0px; ">
+        We confirm that all the information provided by me/us correct. I/we further agree to inform the school
+        promptly,
+        in
+        writing, of any subsequent changes. I/we agree to meet financial responsiblities promptly. I/we understand
+        that
+        any
+        incorrect information given by me/us will render this application invalid and, consequently, the admission
+        granted
+        will be cancelled. I/we understand the amount paid for the admission, all kind of fees will be neither
+        refundable
+        nor transferable.
+      </p>
+
+    </div>
+    <!--  -->
+    <div style="    padding: 0px 5px;">
+      <!-- signature wrapper -->
+      <!-- father -->
+      <div *ngIf="student.relationType === 'parents' && student.signature.father">
+        <div style="width:100%">
+          <div offset="0" style="width: 20%;height: 45px; margin-top: 30px;">
+            <img style="width: 100%; height: 80%;" [src]="student.signature.father" />
+          </div>
+        </div>
+        <!-- (4/12) -->
+        <div style="display: flex; flex-direction: row;">
+          <div style="width:33.3%">
+            <p>Signature of Father</p>
+          </div>
+
+          <div style="width:33.3%">
+            <p>Date : {{currentDate}}</p>
+          </div>
+          <div style="width:33.3%">
+            <p>Place : {{student.signature.fatherRegisteredPlace}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- mother -->
+      <div *ngIf="student.relationType === 'parents' && student.signature.mother">
+        <div style="width:100%;">
+          <div offset="0" style="width: 20%; height: 45px;margin-top: 30px;">
+            <img style="height: 80%;
+             width: 100%;" [src]="student.signature.mother" />
+          </div>
+        </div>
+        <!-- (4/12) -->
+        <div style=" display: flex; flex-direction: row; ">
+
+          <div style="width:33.3%">
+            <p>Signature of Mother</p>
+          </div>
+
+          <div style="width:33.3%">
+            <p>Date : {{currentDate}}</p>
+          </div>
+          <div style="width:33.3%">
+            <p>Place : {{student.signature.motherRegisteredPlace}}</p>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <!-- guardian -->
+      <div *ngIf="student.relationType === 'guardian' ">
+        <div style="width:100%;">
+          <div style="width: 20%;height: 45px; margin-top: 30px;">
+            <img style="
+            min-height: 35px; width: 100%;" [src]="student.signature.guardian" />
+          </div>
+        </div>
+        <!-- (4/12) -->
+        <div style="display: flex; flex-direction: row;">
+          <div style="width:33.3%">
+            <p>Signature of Guardian</p>
+          </div>
+          <div style="width:33.3%">
+            <p>Date : {{currentDate}}</p>
+          </div>
+          <div style="width:33.3%">
+            <p>Place : {{student.signature.guardianRegisteredPlace}}</p>
+          </div>
+        </div>
+      </div>
+      <!-- guardian end -->
+
+    </div>
+
+  </div>
+</div>

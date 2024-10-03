@@ -1,0 +1,85 @@
+<ion-row style="margin-top: 25px;">
+  <ion-col size="6">
+    <ion-item mode="md" fill="outline" class="dropdown ion-margin-bottom m-r-5">
+      <ion-label position="floating">Is the child Asthamatic</ion-label>
+      <ion-select id="asthamatic" name="asthamatic" [(ngModel)]="student.asthamatic" class="ion-no-padding "
+        placeholder="--Select--" interface="popover" interfaceOptions="popover-wide"
+        (ionChange)="student.asthamatic_display_value = studentDetailsService.getDropDownText($event)">
+        <ion-select-option value="1">Yes</ion-select-option>
+        <ion-select-option value="2">No</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Allergies (Medicine) </ion-label>
+      <ion-input name="allergies_medicine" [(ngModel)]="student.allergies_medicine" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Allergies (Food) </ion-label>
+      <ion-input name="allergies_food" [(ngModel)]="student.allergies_food" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item mode="md" fill="outline" class="dropdown ion-margin-bottom m-r-5">
+      <ion-label position="floating">Vision</ion-label>
+      <ion-select name="vision_type" [(ngModel)]="student.vision_type" class="ion-no-padding "
+        placeholder="--Select Vision--" interface="popover" interfaceOptions="popover-wide"
+        (ionChange)="student.vision_type_display_value = studentDetailsService.getDropDownText($event)">
+        <ion-select-option value="1">N/V</ion-select-option>
+        <ion-select-option value="2">F/V</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Any other Medical Ailments </ion-label>
+      <ion-input name="physical_ailment" [(ngModel)]="student.physical_ailment" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Allergic to change water </ion-label>
+      <ion-input name="allergic_to_water" [(ngModel)]="student.allergic_to_water" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Family Doctor/Pediatrician Name </ion-label>
+      <ion-input name="doctor_name" [(ngModel)]="student.doctor_name" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Doctor/Pediatrictian Phone Number </ion-label>
+      <ion-input name="doctor_number" [(ngModel)]="student.doctor_number" minlength="10" maxlength="10" pattern="\d{10}"
+        onkeypress=" return event.charCode>=48 && event.charCode<=57" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Hospital Address </ion-label>
+      <ion-input name="clinic_address" [(ngModel)]="student.clinic_address" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Any Childhood Diseases </ion-label>
+      <ion-input name="childhood_diseases" [(ngModel)]="student.childhood_diseases" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Any Physical Handicap/Disability </ion-label>
+      <ion-input name="disability" [(ngModel)]="student.disability" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Is the child undergoing any treatment </ion-label>
+      <ion-input name="cavities_braces" [(ngModel)]="student.cavities_braces" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>

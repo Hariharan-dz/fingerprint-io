@@ -1,0 +1,21 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      <h1 class="ion-no-margin">Select below options</h1>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h3 class="ion-no-margin">{{ studentDetailsService.modalPopupText }}</h3>
+    <ion-radio-group [(ngModel)]="textSpeechRecog.selectedValue" (ionChange)="textSpeechRecog.choosedValue($event)">
+      <ion-item class="cancel-btn" lines="none">
+        <ion-radio value="yes"></ion-radio>
+        <ion-label class="ion-padding-start">Yes</ion-label>
+      </ion-item>
+      <ion-item class="ok-btn" lines="none">
+        <ion-radio value="no"></ion-radio>
+        <ion-label class="ion-padding-start">No</ion-label>
+      </ion-item>
+    </ion-radio-group>
+</ion-content>

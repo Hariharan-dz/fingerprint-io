@@ -1,0 +1,183 @@
+@import '../../theme/variables.scss';
+
+//initial load data css
+.admin-password-popup {
+    .grid-container {
+        margin-top: 60px;
+
+        .school-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            ion-img {
+                width: 90px;
+            }
+        }
+
+        .password-pin-col {
+            margin-top: 32px;
+
+            ion-label {
+                font-size: 18px;
+                font-weight: 600;
+                color: var(--ion-txt-color-B);
+            }
+        }
+
+        .pin-nr-wrapper {
+            margin-bottom: 10px;
+
+            .pin-number {
+                width: 100px;
+                font-size: 18px;
+                font-weight: 700;
+                margin-right: 10px;
+                display: inline-block;
+                --padding-start: 0px;
+                color: var(--ion-txt-color-B);
+                border-bottom: 2px solid var(--ion-txt-color-B);
+            }
+        }
+
+        .password-submit-btn {
+            --background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+
+            ion-label {
+                text-transform: none;
+                padding: 0px 72px;
+                font-size: 18px;
+            }
+        }
+
+    }
+}
+
+//after admin pin entered
+.container-wrapper {
+    margin: 36px;
+
+    ion-card {
+        border: 2px solid var(--ion-primary-color);
+
+        ion-item {
+            --background: #f3f3f3;
+
+            ion-button {
+                height: 30px;
+                --background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+            }
+
+            .right-btn-label {
+                padding: 8px 16px;
+                font-size: 16px;
+            }
+
+            .custom-checkbox {
+                --background-checked: var(--ion-secondary-color);
+                --border-color: var(--ion-secondary-color);
+                --border-radius: 4px;
+                margin-right: 34px;
+                --height: 24px;
+                --width: 24px;
+            }
+        }
+
+    }
+
+}
+
+.reset-password-modalup,
+.one-drive-modalup, 
+.inapp-cred-change,
+.in-app-modalup,
+.emailsentto-modalup {
+
+    .save-changes-btn1 {
+        margin-top: 28px;
+
+        .btn-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+            ion-button {
+                height: 34px;
+                --background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+
+                ion-label {
+                    padding: 16px;
+                    font-size: 16px;
+                }
+            }
+
+        }
+    }
+
+    .email-add-btn {
+        display: flex;
+        justify-content: end;
+        width: 100%;
+
+        ion-button {
+            height: 36px;
+            --background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+
+            ion-icon {
+                padding: 0px 4px;
+                font-size: 28px;
+            }
+        }
+    }
+}
+
+ion-modal {
+
+    ion-item {
+        margin: 16px;
+    }
+    
+    ion-toolbar {
+        --background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+    }
+
+    ion-title {
+        color: var(--ion-txt-color-W);
+        font-size: 20px;
+    }
+
+    ion-item {
+        --highlight-background: var(--ion-primary-color);
+
+        // &.item-has-value {
+        //     ion-label {
+        //         color: var(--ion-primary-color);
+        //         transform: translateY(-10px) scale(0.96);
+        //         font-size: 18px;
+        //     }
+        // }
+
+        // &.item-has-focused {
+        //     ion-label {
+        //         color: var(--ion-primary-color);
+        //         transform: translateY(-10px) scale(0.96);
+        //         font-size: 18px;
+        //     }
+        // }
+
+    }
+
+    .close-symbol-icon {
+        color: var(--ion-txt-color-W);
+        font-size: 30px;
+    }
+}
+
+// :host(.item-interactive.ion-focused), :host(.item-interactive.item-has-focus) {
+//     --highlight-background: red !important;
+// }
+
+.visiblity-none {
+    visibility: hidden;
+}

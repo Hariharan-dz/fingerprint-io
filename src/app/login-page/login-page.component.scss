@@ -1,0 +1,96 @@
+@import '../../theme/variables.scss';
+
+ion-content {
+    width: 100vw;
+    height: 100vh;
+
+    .ion-grid-container {
+        text-align: center;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .school-logo-container {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+
+        ion-img {
+            width: 120px;
+        }
+    }
+
+    ion-card {
+        background: #f0f3f5;
+        margin: 28px 16px 28px 16px;
+    }
+
+    .pin-nr-only {
+        ion-card {
+            ion-label {
+                color: var(--ion-txt-color-B);
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            .pin-nr-wrapper {
+                margin-bottom: 10px;
+                --background: #ffffff;
+                --highlight-background: var(--ion-txt-color-B);
+
+                .pin-number {
+                    width: 100px;
+                    font-size: 18px;
+                    font-weight: 700;
+                    margin-left: 10px;
+                    text-align: center;
+                    display: inline-block;
+                    --padding-start: 0px;
+                    color: var(--ion-txt-color-B);
+                    border-bottom: 2px solid var(--ion-txt-color-B);
+
+                }
+            }
+        }
+    }
+}
+
+.container-wrap {
+    height: 100%;
+    position: relative;
+    opacity: 0.4;
+    background: url(../../assets/login-school-img.jpg);
+    background-size: cover;
+}
+
+.login-form {
+    // margin: 12% 12%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 70px;
+
+    ion-card {
+        background: #ffffff;
+        border: 4px solid #1d4d9c;
+    }
+
+    .login-btn {
+        --background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+
+        ion-label {
+            color: var(--ion-txt-color-W);
+            text-transform: none;
+            font-size: 16px;
+        }
+    }
+}
+
+.visiblity-none {
+    visibility: hidden;
+}

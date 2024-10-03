@@ -1,0 +1,117 @@
+<ion-row style="padding: 1px 0 10px 0;">
+  <ion-col size="8">
+    <ion-title mode="md" style="padding-inline: 0px; font-family: inter; font-size: 18px;">
+      <ion-label style="color:black">Primary contact</ion-label>
+    </ion-title>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Name </ion-label>
+      <ion-input name="primary_name" [(ngModel)]="student.primary_name" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+      <ion-label position="floating"> Relationship to child </ion-label>
+      <ion-input name="primary_relation" [(ngModel)]="student.primary_relation" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Phone Number </ion-label>
+      <ion-input name="primary_phone" minlength="10" maxlength="10" pattern="\d{10}"
+        onkeypress=" return event.charCode>=48 && event.charCode<=57" [(ngModel)]="student.primary_phone"
+        type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+      <ion-label position="floating"> WhatsApp Number </ion-label>
+      <ion-input name="primary_whatsapp" minlength="10" maxlength="10" pattern="\d{10}"
+        onkeypress=" return event.charCode>=48 && event.charCode<=57" [(ngModel)]="student.primary_whatsapp"
+        type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="12">
+    <div style="border-top: 1.2px var(--ion-primary-color) solid; margin-inline-start: 2px; margin-inline-end: 2px;"
+      class="line"></div>
+  </ion-col>
+</ion-row>
+
+<!--Secondary contact-->
+<ion-row style="padding: 1px 0 10px 0;">
+  <ion-col size="8">
+    <ion-title mode="md" style="padding-inline: 0px; font-family: inter; font-size: 18px;">
+      <ion-label style="color:black">Secondary contact</ion-label>
+    </ion-title>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Name </ion-label>
+      <ion-input name="secondary_name" [(ngModel)]="student.secondary_name" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+      <ion-label position="floating"> Relationship to child </ion-label>
+      <ion-input name="secondary_relation" [(ngModel)]="student.secondary_relation" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Phone Number </ion-label>
+      <ion-input minlength="10" maxlength="10" pattern="\d{10}"
+        onkeypress=" return event.charCode>=48 && event.charCode<=57" name="secondary_phone"
+        [(ngModel)]="student.secondary_phone" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+      <ion-label position="floating"> WhatsApp Number </ion-label>
+      <ion-input minlength="10" maxlength="10" pattern="\d{10}"
+        onkeypress=" return event.charCode>=48 && event.charCode<=57" name="secondary_whatsapp"
+        [(ngModel)]="student.secondary_whatsapp" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="12">
+    <div style="border-top: 1.2px var(--ion-primary-color) solid; margin-inline-start: 2px; margin-inline-end: 2px;"
+      class="line"></div>
+  </ion-col>
+</ion-row>
+
+<!--tertory contact-->
+<ion-row style="padding: 1px 0 0px 0;">
+  <ion-col size="8">
+    <ion-title mode="md" style="padding-inline: 0px; font-family: inter; font-size: 18px;">
+      <ion-label style="color:black">Ternery contact</ion-label>
+    </ion-title>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Name </ion-label>
+      <ion-input name="ternery_name" [(ngModel)]="student.ternery_name" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+      <ion-label position="floating"> Relationship to child </ion-label>
+      <ion-input name="ternery_relation" [(ngModel)]="student.ternery_relation" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating"> Phone Number </ion-label>
+      <ion-input minlength="10" maxlength="10" pattern="\d{10}"
+        onkeypress=" return event.charCode>=48 && event.charCode<=57" name="ternery_phone"
+        [(ngModel)]="student.ternery_phone" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+      <ion-label position="floating"> WhatsApp Number </ion-label>
+      <ion-input minlength="10" maxlength="10" pattern="\d{10}"
+        onkeypress=" return event.charCode>=48 && event.charCode<=57" name="ternery_whatsapp"
+        [(ngModel)]="student.ternery_whatsapp" type="text"></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>

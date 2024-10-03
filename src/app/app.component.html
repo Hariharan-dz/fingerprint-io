@@ -1,0 +1,40 @@
+<div *ngIf="urlList.indexOf(route.url.split('?')[0]) == -1">
+  <ion-app>
+    <ion-header class="ion-no-shadow" mode="ios">
+      <ion-toolbar style="border-bottom: 0;">
+        <div class="ion-page" id="main-content">
+          <ion-buttons slot="start">
+            <ion-menu-button style="color: white;"></ion-menu-button>
+          </ion-buttons>
+        </div>
+        <ion-title>
+          <ion-label>Student Admission Form</ion-label>
+        </ion-title>
+        <ion-icon name="log-out-outline" slot="end" routerLink="/login"></ion-icon>
+      </ion-toolbar>
+    </ion-header>
+
+
+    <ion-content>
+      <ion-menu class="nav-bar-background" style="--width: 250px;" contentId="main-content">
+        <ion-list
+          style="padding: 0;background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));">
+          <ion-item (click)="closeMenu()" routerLinkActive="active-link" class="nav-bar-background" lines="none"
+            [routerLink]="item.link" [title]="item.title" *ngFor="let item of menuList" routerDirection="root">
+            <ion-icon style="color: white;" [name]="item.image" class="pointer-none"></ion-icon>
+            <ion-label style="color: white;" [title]="item.title" class="ion-padding">
+              {{item.title}}
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-menu>
+      <ion-router-outlet id="menu-content"></ion-router-outlet>
+    </ion-content>
+  </ion-app>
+</div>
+
+<div *ngIf="urlList.indexOf(route.url.split('?')[0]) != -1">
+  <ion-app>
+    <ion-router-outlet id="menu-content"></ion-router-outlet>
+  </ion-app>
+</div>

@@ -1,0 +1,72 @@
+<ion-row *ngFor="let sibling of siblings; let i = index;">
+  <ion-col *ngIf="i!==0" size="12" class="border-line"></ion-col>
+  <ion-col size="12">
+
+    <ion-title mode="md" class="subtitle">
+      <ion-label>Sibling {{i + 1}}</ion-label>
+      <ion-button fill="outline" (click)="deleteAlert(i)" class="delete-button">
+        <ion-label>Delete</ion-label>
+      </ion-button>
+    </ion-title>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input type="text" [(ngModel)]="sibling.first_name" name="sibling_first_name"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+      <ion-label position="floating">Middle Name</ion-label>
+      <ion-input type="text" [(ngModel)]="sibling.middle_name" name="sibling_middle_name"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input type="text" [(ngModel)]="sibling.last_name" name="sibling_last_name"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="dropdown m-l-5">
+      <ion-label position="floating">Gender</ion-label>
+      <ion-select class="ion-no-padding" placeholder="--Select--" name="sibling_gender" interface="popover"
+        interfaceOptions="popover-wide" [(ngModel)]="sibling.gender"
+        (ionChange)="sibling.gender_display_value = studentDetailsService.getDropDownText($event)">
+        <ion-select-option value="M">Male</ion-select-option>
+        <ion-select-option value="F">Female</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating">DOB</ion-label>
+      <ion-input type="date" placeholder="MM/DD/YYYY" [(ngModel)]="sibling.dob" (ionChange)="calculateStudentAge(sibling.dob, sibling, 'age')"  name="sibling_dob"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item mode="md" fill="outline" class="textbox ion-margin-bottom m-l-5">
+      <ion-label position="floating">Age</ion-label>
+      <ion-input type="text" [(ngModel)]="sibling.age" name="sibling_age" [disabled]="true"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating">Current School</ion-label>
+      <ion-input type="text" [(ngModel)]="sibling.current_school" name="sibling_current_school"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+      <ion-label position="floating"> Current Class/Grade </ion-label>
+      <ion-input type="text" [(ngModel)]="sibling.current_class" name="sibling_current_class"></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size="12" class="ion-text-center">
+    <ion-button (click)="addSibling();" class="add-button">
+      <ion-label>Add Sibling</ion-label>
+    </ion-button>
+  </ion-col>
+</ion-row>

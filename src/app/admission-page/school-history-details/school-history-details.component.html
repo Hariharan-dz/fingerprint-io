@@ -1,0 +1,76 @@
+<ion-row *ngFor="let schoolHistory of schoolHistories; let i = index;">
+  <ion-col *ngIf="i!==0" size="12" class="border-line"></ion-col>
+  <ion-col size="12">
+
+    <ion-title mode="md" class="subtitle">
+      <ion-label>School {{i + 1}}</ion-label>
+      <ion-button fill="outline" (click)="deleteAlert(i)" class="delete-button">
+        <ion-label>Delete</ion-label>
+      </ion-button>
+    </ion-title>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating">School Name</ion-label>
+      <ion-input type="text" [(ngModel)]="schoolHistory.school_name" name="last_school_name"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+      <ion-label position="floating">Place of the School</ion-label>
+      <ion-input type="text" [(ngModel)]="schoolHistory.school_place" name="last_school_place"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="dropdown m-r-5">
+      <ion-label position="floating">Curriculum</ion-label>
+      <ion-select class="ion-no-padding " placeholder="--Select--" name="curriculum" interface="popover"
+        interfaceOptions="popover-wide" [(ngModel)]="schoolHistory.curriculum"
+        (ionChange)="schoolHistory.curriculum_display_value = studentDetailsService.getDropDownText($event)">
+        <ion-select-option value="cbse">CBSE</ion-select-option>
+        <ion-select-option value="state">State</ion-select-option>
+        <ion-select-option value="other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+      <ion-label position="floating">Language of Instruction</ion-label>
+      <ion-input type="text" [(ngModel)]="schoolHistory.language_of_instruction"
+        name="last_school_language_of_instruction"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating">From Date</ion-label>
+      <ion-input type="date" placeholder="MM/DD/YYYY" [(ngModel)]="schoolHistory.from_date"
+        name="last_school_from_date"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item mode="md" fill="outline" class="textbox ion-margin-bottom m-l-5">
+      <ion-label position="floating">To Date</ion-label>
+      <ion-input type="date" placeholder="MM/DD/YYYY" [(ngModel)]="schoolHistory.to_date"
+        name="last_school_to_date"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+      <ion-label position="floating">Last Class/Standard</ion-label>
+      <ion-input type="text" [(ngModel)]="schoolHistory.last_class" name="last_class"></ion-input>
+    </ion-item>
+  </ion-col>
+  <ion-col size="6">
+    <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+      <ion-label position="floating">Reason for leaving</ion-label>
+      <ion-input type="text" [(ngModel)]="schoolHistory.reason_for_leaving" name="reason_for_leaving"></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size="12" class="ion-text-center">
+    <ion-button (click)="addSchoolHistoryCount();" class="add-button">
+      <ion-label>Add School</ion-label>
+    </ion-button>
+  </ion-col>
+</ion-row>

@@ -1,0 +1,45 @@
+@import '../../../theme/form.scss';
+@import '../../../global.scss';
+
+.textarea {
+  margin-bottom: 10px;
+}
+
+ion-segment {
+  background-color: #fafafa;
+  padding: 0px 5px 0px 16px;
+}
+
+/* iOS styles */
+ion-segment-button.ios {
+  --color: gray;
+  --color-checked: #fff;
+
+  --border-radius: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  --indicator-color: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+  background-color: #fafafa;
+  margin: 10px 4px 0px 4px;
+  height: 35px;
+}
+
+.radio-content-wrapper {
+  width: 380px;
+}
+
+.radio-content {
+  --color-checked: #1d4c9b;
+}
+
+.common-toolbar-tilte {
+  --background: transparent;
+
+  .details-title {
+    span {
+      color: #bf4d4d;
+      padding-left: 5px;
+      font-size: 18px;
+    }
+  }
+}

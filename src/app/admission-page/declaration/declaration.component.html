@@ -1,0 +1,133 @@
+<p style="line-height: 28px;font-family: inter;font-size: 17px; color: #808080">
+  We confirm that all the information provided by me/us correct. I/we further agree to inform the school promptly, in
+  writing, of any subsequent changes. I/we agree to meet financial responsiblities promptly. I/we understand that any
+  incorrect information given by me/us will render this application invalid and, consequently, the admission granted
+  will be cancelled. I/we understand the amount paid for the admission, all kind of fees will be neither refundable
+  nor transferable.
+</p>
+<div *ngIf=" student.relationType==='parents'">
+  <ion-row>
+    <ion-col class=" ion-no-padding">
+      <ion-toolbar class="common-toolbar-tilte ion-text-start" mode="ios">
+        <ion-title class="ion-text-start  ion-no-padding  details-title">Signature of Father<span>*</span></ion-title>
+      </ion-toolbar>
+    </ion-col>
+  </ion-row>
+  <!-- signaturepad(Father) -->
+  <!-- starts -->
+  <div class="sign-wrapper" style="position: relative;">
+    <ion-buttons mode="ios" class="ion-float-right" *ngIf="signature.father" style="position: absolute;right: 0;">
+      <ion-button (click)="drawClear('father')">
+        Clear
+      </ion-button>
+    </ion-buttons>
+    <signature-pad #father [options]="signaturePadOptions" (onBeginEvent)="drawStart($event)"
+      (onEndEvent)="drawComplete('father',father)">
+    </signature-pad>
+  </div>
+  <!-- ends -->
+  <ion-row>
+    <ion-col class="sign-date-place" size="12">
+      <ion-row class="ion-no-padding">
+        <ion-col>
+          <div>
+            <ion-label>Date : <span style="margin-left: 5px;">{{date}}</span></ion-label>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div style="display: flex;
+          flex-direction: row;
+        ">
+            <ion-label>Place :</ion-label>
+            <ion-input [(ngModel)]="this.student.signature.fatherRegisteredPlace" name="fatherRegisteredPlace"
+              class="place-border ion-no-padding ion-margin-start" placeholder="Enter place"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <!--  -->
+  <ion-row>
+    <ion-col class="ion-no-padding">
+      <ion-toolbar class="common-toolbar-tilte ion-text-start" mode="ios">
+        <ion-title class="ion-text-start  ion-no-padding  details-title">Signature of Mother<span>*</span></ion-title>
+      </ion-toolbar>
+    </ion-col>
+  </ion-row>
+  <!-- signaturepad(Mother) -->
+  <!-- starts -->
+  <div class="sign-wrapper" style="position: relative;">
+    <ion-buttons mode="ios" *ngIf="signature.mother" class="ion-float-right" style="position: absolute;right: 0;">
+      <ion-button (click)="drawClear('mother')">
+        Clear
+      </ion-button>
+    </ion-buttons>
+    <signature-pad #mother [options]="signaturePadOptions" (onBeginEvent)="drawStart($event)"
+      (onEndEvent)="drawComplete('mother',mother)">
+    </signature-pad>
+  </div>
+  <!-- ends -->
+  <ion-row>
+    <ion-col class="sign-date-place" size="12">
+      <ion-row class="ion-no-padding">
+        <ion-col>
+          <div>
+            <ion-label>Date : <span style="margin-left: 5px;">{{date}}</span></ion-label>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div style="display: flex;
+          flex-direction: row;
+          ">
+            <ion-label>Place :</ion-label>
+            <ion-input [(ngModel)]="this.student.signature.motherRegisteredPlace" name="motherRegisteredPlace"
+              class="place-border ion-no-padding ion-margin-start" placeholder="Enter place"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</div>
+<!-- guardian -->
+<div *ngIf="student.relationType === 'guardian'">
+  <ion-row>
+    <ion-col class="ion-no-padding">
+      <ion-toolbar class="common-toolbar-tilte ion-text-start" mode="ios">
+        <ion-title class="ion-text-start  ion-no-padding  details-title">Signature of
+          Guardian<span>*</span></ion-title>
+      </ion-toolbar>
+    </ion-col>
+  </ion-row>
+  <!-- signaturepad(guardian) -->
+  <!-- starts -->
+  <div class="sign-wrapper" style="position: relative;">
+    <ion-buttons mode="ios" *ngIf="signature.guardian" class="ion-float-right" style="position: absolute;right: 0;">
+      <ion-button (click)="drawClear('guardian')">
+        Clear
+      </ion-button>
+    </ion-buttons>
+    <signature-pad #guardian [options]="signaturePadOptions" (onBeginEvent)="drawStart($event)"
+      (onEndEvent)="drawComplete('guardian',guardian)">
+    </signature-pad>
+  </div>
+  <!-- ends -->
+  <ion-row>
+    <ion-col class="sign-date-place">
+      <ion-row class="ion-no-padding">
+        <ion-col>
+          <div>
+            <ion-label>Date : <span style="margin-left: 5px;">{{date}}</span></ion-label>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div style="display: flex;
+          flex-direction: row;">
+            <ion-label>Place :</ion-label>
+            <ion-input [(ngModel)]="this.student.signature.guardianRegisteredPlace" name="guardianRegisteredPlace"
+              class="place-border ion-no-padding ion-margin-start" placeholder="Enter place"></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</div>

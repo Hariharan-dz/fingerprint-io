@@ -1,0 +1,332 @@
+<div style="padding: 5px 14px;">
+  <!-- student document -->
+  <!-- document title -->
+  <ion-row class="ion-margin-bottom" style="margin-bottom: 0px;">
+    <ion-col class="ion-no-padding">
+      <ion-toolbar class="common-toolbar-tilte ion-text-start" mode="ios">
+        <ion-title class="ion-text-start  ion-no-padding  details-title">Student document<span>*</span></ion-title>
+      </ion-toolbar>
+    </ion-col>
+  </ion-row>
+
+  <ion-list>
+    <!-- 1 -->
+    <ion-row class="doc-border">
+      <ion-col size="4" class="doc-title">
+        <h4>Aadhar Card</h4>
+      </ion-col>
+      <ion-col size="4" class="d-flex scanDocument-wrapper">
+        <!-- frontView -->
+        <div class="front-view-container">
+          <ion-buttons mode="ios" class="front-view">
+            <ion-button (click)="scanDocument('student_aadhar_frontView', true)"> Scan Document</ion-button>
+            <div class="inner-div" name="student_aadhar_frontView"> ( Front )</div>
+          </ion-buttons>
+        </div>
+        <!-- backView -->
+        <ion-buttons mode="ios" class="back-view">
+          <ion-button (click)="scanDocument('student_aadhar_backView', true)"> Scan Document</ion-button>
+          <div name="student_aadhar_backView"> ( Back ) </div>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="4" class="preview-wrapper-class">
+        <!-- frontAadhar -->
+        <div class="front-view">
+          <div class="d-flex-c margin-overwritten" *ngIf="documents.student_aadhar_frontView">
+            <ion-thumbnail (click)="showDocumentModel('student_aadhar_frontView');">
+              <ion-img id="my-image" [src]="documents.student_aadhar_frontView.dataUrl"
+                alt="Student Aadhar FrontView"></ion-img>
+            </ion-thumbnail>
+            <ion-icon (click)="deleteDoc('student_aadhar_frontView')" name="trash-outline"></ion-icon>
+          </div>
+        </div>
+        <!-- backAadhar -->
+        <div class="d-flex-c back-view" *ngIf="documents.student_aadhar_backView ">
+          <ion-thumbnail (click)="showDocumentModel('student_aadhar_backView');">
+            <ion-img id="my-image" [src]="documents.student_aadhar_backView.dataUrl"
+              alt="Student Aadhar BackView"></ion-img>
+          </ion-thumbnail>
+          <ion-icon (click)="deleteDoc('student_aadhar_backView')" name="trash-outline"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- 2 -->
+    <ion-row class="doc-border">
+      <ion-col size="4" class="doc-title">
+        <h4 name="schoolRecord">Preivious school<br>(transfer certificates)</h4>
+      </ion-col>
+      <ion-col size="4" class="d-flex">
+        <ion-buttons mode="ios">
+          <ion-button (click)="scanDocument('schoolRecord')"> Scan Document </ion-button>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="4">
+        <div *ngFor="let schoolRecord of documents.schoolRecord ; let i=index;" class="d-flex-c">
+          <ion-thumbnail (click)="showDocumentModel('schoolRecord', i);" style="height: 80px ; width: 100px;">
+            <ion-img [src]="schoolRecord.dataUrl" alt="schoolRecord"></ion-img>
+          </ion-thumbnail>
+          <ion-icon (click)="deleteDoc('schoolRecord', i)" name="trash-outline"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- 3 -->
+    <!-- 4  -->
+    <ion-row class="doc-border">
+      <ion-col size="4" class="doc-title">
+        <h4 name="passportOrBirthCertificate">Passport (or) Birth certificates</h4>
+      </ion-col>
+      <ion-col size="4" class="d-flex">
+        <ion-buttons mode="ios">
+          <ion-button (click)="scanDocument('passportOrBirthCertificate')">
+            Scan document
+          </ion-button>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="4">
+        <div *ngFor="let passportOrBirthCertificate of documents.passportOrBirthCertificate ; let i=index;"
+          class="d-flex-c">
+          <ion-thumbnail (click)="showDocumentModel('passportOrBirthCertificate', i);"
+            style="height: 80px ; width: 100px;">
+            <ion-img [src]="passportOrBirthCertificate.dataUrl" alt="passportOrBirthCertificate"></ion-img>
+          </ion-thumbnail>
+          <ion-icon (click)="deleteDoc('passportOrBirthCertificate', i)" name="trash-outline"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- 5  -->
+    <ion-row class="doc-border">
+      <ion-col size="4" class="doc-title">
+        <h4 name="medicalReports">Medical reports if applicable</h4>
+      </ion-col>
+      <ion-col size="4" class="d-flex">
+        <ion-buttons mode="ios">
+          <ion-button (click)="scanDocument('medicalReports')">
+            Scan document
+          </ion-button>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="4">
+        <div *ngFor="let medicalReports of documents.medicalReports ; let i=index;" class="d-flex-c">
+          <ion-thumbnail (click)="showDocumentModel('medicalReports', i);" style="height: 80px;
+          width: 100px;">
+            <ion-img [src]="medicalReports.dataUrl" alt="medicalReports"></ion-img>
+          </ion-thumbnail>
+          <ion-icon (click)="deleteDoc('medicalReports',i)" name="trash-outline"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+  <ion-row style="margin-top: 0px; margin-bottom: 10px;">
+    <!-- title -->
+    <ion-col class="ion-no-padding" size="12">
+      <ion-toolbar class="common-toolbar-tilte ion-text-start" mode="ios">
+        <ion-title class="ion-text-start  ion-no-padding  details-title"> Relationship<span>*</span> &nbsp; &nbsp;
+        </ion-title>
+      </ion-toolbar>
+    </ion-col>
+    <!-- radio -->
+    <ion-col class="ion-no-padding" size="9">
+      <ion-radio-group mode="md" name="relationType" [(ngModel)]="student.relationType">
+        <ion-row class="radio-content-wrapper">
+          <ion-col>
+            <ion-item lines="none">
+              <ion-radio class="radio-content" slot="start" value="parents" aria-label="parent"></ion-radio>
+              <ion-label style="font-size: 20px;">Parent</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item lines="none">
+              <ion-radio class="radio-content" slot="start" value="guardian" aria-label="guardian"></ion-radio>
+              <ion-label style="font-size: 20px;">Guardian</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-radio-group>
+    </ion-col>
+  </ion-row>
+  <!-- father docuemnt -->
+  <!-- document title -->
+  <div *ngIf="student.relationType === 'parents'">
+    <ion-row class="ion-margin-bottom" style="margin-bottom: 0px;">
+      <ion-col class="ion-no-padding">
+        <ion-toolbar class="common-toolbar-tilte ion-text-start" mode="ios">
+          <ion-title class="ion-text-start  ion-no-padding  details-title">Father document<span>*</span></ion-title>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+
+    <ion-list>
+      <!-- 1 -->
+      <ion-row class="doc-border">
+        <ion-col size="4" class="doc-title">
+          <h4>Aadhar Card</h4>
+        </ion-col>
+        <ion-col size="4" class="d-flex scanDocument-wrapper">
+          <!-- frontView -->
+          <div class="front-view-container">
+            <ion-buttons mode="ios" class="front-view">
+              <ion-button (click)="scanDocument('father_aadhar_frontView', true)"> Scan Document</ion-button>
+              <div class="inner-div" name="father_aadhar_backView"> ( Front )</div>
+            </ion-buttons>
+          </div>
+          <!-- backView -->
+          <ion-buttons mode="ios" class="back-view">
+            <ion-button (click)="scanDocument('father_aadhar_backView', true)"> Scan Document</ion-button>
+            <div name="father_aadhar_backView"> ( Back ) </div>
+          </ion-buttons>
+        </ion-col>
+        <ion-col size="4" class="preview-wrapper-class">
+          <!-- frontAadhar -->
+          <div class="front-view">
+            <div class="d-flex-c margin-overwritten" *ngIf="documents.father_aadhar_frontView">
+              <ion-thumbnail (click)="showDocumentModel('father_aadhar_frontView');"
+                style="height: 80px ; width: 100px;">
+                <ion-img id="my-image" [src]="documents.father_aadhar_frontView.dataUrl"
+                  alt="father_aadhar_frontView"></ion-img>
+              </ion-thumbnail>
+              <ion-icon (click)="deleteDoc('father_aadhar_frontView')" name="trash-outline"></ion-icon>
+            </div>
+          </div>
+          <!-- backAadhar -->
+          <div class="d-flex-c back-view" *ngIf="documents.father_aadhar_backView">
+            <ion-thumbnail (click)="showDocumentModel('father_aadhar_backView');" style="height: 80px ; width: 100px;">
+              <ion-img id="my-image" [src]="documents.father_aadhar_backView.dataUrl"
+                alt="father_aadhar_backView"></ion-img>
+            </ion-thumbnail>
+            <ion-icon (click)="deleteDoc('father_aadhar_backView')" name="trash-outline"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </div>
+  <!-- mother document -->
+  <!-- document title -->
+  <div *ngIf="student.relationType === 'parents' ">
+    <ion-row class="ion-margin-bottom" style="margin-bottom: 0px;">
+      <ion-col class="ion-no-padding">
+        <ion-toolbar class="common-toolbar-tilte ion-text-start" mode="ios">
+          <ion-title class="ion-text-start  ion-no-padding  details-title">Mother document<span>*</span></ion-title>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+    <!-- 1 -->
+    <ion-row class="doc-border">
+      <ion-col size="4" class="doc-title">
+        <h4>Aadhar Card</h4>
+      </ion-col>
+      <ion-col size="4" class="d-flex scanDocument-wrapper">
+        <!-- frontView -->
+        <div class="front-view-container">
+          <ion-buttons mode="ios" class="front-view">
+            <ion-button (click)="scanDocument('mother_aadhar_frontView', true)"> Scan Document</ion-button>
+            <div class="inner-div" name="mother_aadhar_frontView"> ( Front )</div>
+          </ion-buttons>
+        </div>
+        <!-- backView -->
+        <ion-buttons mode="ios" class="back-view">
+          <ion-button (click)="scanDocument('mother_aadhar_backView', true)"> Scan Document</ion-button>
+          <div name="mother_aadhar_backView"> ( Back ) </div>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="4" class="preview-wrapper-class">
+        <!-- frontAadhar -->
+        <div class="front-view">
+          <div class="d-flex-c margin-overwritten" *ngIf="documents.mother_aadhar_frontView">
+            <ion-thumbnail (click)="showDocumentModel('mother_aadhar_frontView');">
+              <ion-img id="my-image" [src]="documents.mother_aadhar_frontView.dataUrl"
+                alt="mother_aadhar_frontView"></ion-img>
+            </ion-thumbnail>
+            <ion-icon (click)="deleteDoc('mother_aadhar_frontView')" name="trash-outline"></ion-icon>
+          </div>
+        </div>
+        <!-- backAadhar -->
+        <div class="d-flex-c back-view" *ngIf="documents.mother_aadhar_backView">
+          <ion-thumbnail (click)="showDocumentModel('mother_aadhar_backView');">
+            <ion-img id="my-image" [src]="documents.mother_aadhar_backView.dataUrl"
+              alt="mother_aadhar_backView"></ion-img>
+          </ion-thumbnail>
+          <ion-icon (click)="deleteDoc('mother_aadhar_backView')" name="trash-outline"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <!-- Gaurdian document -->
+  <!-- Document title -->
+  <div *ngIf="student.relationType === 'guardian' ">
+    <ion-row class="ion-margin-bottom" style="margin-bottom: 0px;">
+      <ion-col class="ion-no-padding">
+        <ion-toolbar class="common-toolbar-tilte ion-text-start" mode="ios">
+          <ion-title class="ion-text-start  ion-no-padding  details-title">Guardian document<span>*</span></ion-title>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+    <!-- 1 -->
+    <ion-row class="doc-border">
+      <ion-col size="4" class="doc-title">
+        <h4>Aadhar Card</h4>
+      </ion-col>
+      <ion-col size="4" class="d-flex scanDocument-wrapper">
+        <!-- frontView -->
+        <div class="front-view-container">
+          <ion-buttons mode="ios" class="front-view">
+            <ion-button (click)="scanDocument('guardian_aadhar_frontView', true)"> Scan Document</ion-button>
+            <div class="inner-div"> ( Front )</div>
+          </ion-buttons>
+        </div>
+        <!-- backView -->
+        <ion-buttons mode="ios" class="back-view">
+          <ion-button (click)="scanDocument('guardian_aadhar_backView', true)"> Scan Document</ion-button>
+          <div> ( Back ) </div>
+        </ion-buttons>
+      </ion-col>
+      <ion-col size="4" class="preview-wrapper-class">
+        <!-- frontAadhar -->
+        <div class="front-view">
+          <div class="d-flex-c margin-overwritten" *ngIf="documents.guardian_aadhar_frontView">
+            <ion-thumbnail (click)="showDocumentModel('guardian_aadhar_frontView');"
+              style="height: 80px ; width: 100px;">
+              <ion-img id="my-image" [src]="documents.guardian_aadhar_frontView.dataUrl"
+                alt="guardian_aadhar_frontView"></ion-img>
+            </ion-thumbnail>
+            <ion-icon (click)="deleteDoc('guardian_aadhar_frontView')" name="trash-outline"></ion-icon>
+          </div>
+        </div>
+        <!-- backAadhar -->
+        <div class="d-flex-c back-view" *ngIf="documents.guardian_aadhar_backView">
+          <ion-thumbnail (click)="showDocumentModel('guardian_aadhar_backView');" style="height: 80px ; width: 100px;">
+            <ion-img id="my-image" [src]="documents.guardian_aadhar_backView.dataUrl"
+              alt="guardian_aadhar_backView"></ion-img>
+          </ion-thumbnail>
+          <ion-icon (click)="deleteDoc('guardian_aadhar_backView')" name="trash-outline"></ion-icon>
+        </div>
+      </ion-col>
+
+    </ion-row>
+  </div>
+  <div *ngIf="student.relationType === 'guardian' " style="height:260px; visibility: hidden;">
+    <p>empty space need when changing parent to gaurdian</p>
+    <!-- visibility: hidden; -->
+  </div>
+</div>
+<ion-modal [isOpen]="documentModelView.isModalOpen" (willDismiss)="documentModelView.isModalOpen=false" style="--height: 560px;
+  --width: 655px;">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar style="height: 67px;" mode="ios">
+        <ion-title mode="ios" style="padding: 0px;
+        height: 67px;
+        left: 13px; text-align: start;">Document</ion-title>
+
+        <ion-buttons slot="end" style="height: 64px;">
+          <ion-button (click)="documentModelView.isModalOpen=false">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <div style="height: 100%; display: flex;justify-content: center; align-items: center;">
+        <ion-img [src]="documentModelView.documentSrcValue" alt="medicalReports"></ion-img>
+      </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

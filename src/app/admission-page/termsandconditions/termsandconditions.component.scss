@@ -1,0 +1,52 @@
+table,
+th {
+  border: 1px solid black;
+  width: 96%;
+  margin-left: 2px;
+}
+
+td,
+th {
+  width: 60%;
+  border: 1px solid;
+  padding: 5px 0px 5px 12px;
+}
+
+.tac-content {
+  line-height: 28px;
+  font-family: inter;
+  font-size: 17px;
+  color: #808080;
+  position: absolute;
+}
+
+.tac-footer.md {
+  background: white;
+  position: fixed;
+  width: calc(100% - 75px);
+  top: auto;
+  height: 65px;
+  bottom: 88px;
+}
+
+
+.tac-footer.ios {
+  background: #fff;
+  position: fixed;
+  width: calc(100% - 75px);
+  top: auto;
+  height: 65px;
+  bottom: 100px;
+}
+
+
+@media screen and (orientation: landscape) {
+  .tac-footer.ios {
+    background: #fff;
+    position: fixed;
+    width: calc(100% - 75px);
+    top: auto;
+    height: 65px;
+    bottom: 99px;
+  }
+}

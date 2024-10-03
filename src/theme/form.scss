@@ -1,0 +1,248 @@
+/* Text area Css Start */
+.textarea {
+  font-size: 14px;
+  color: #343a40;
+  --border-color: #d4d4d4;
+  font-family: "roboto" !important;
+  font-style: normal;
+
+  .label-floating {
+    -webkit-transform: translateY(12%) !important;
+    transform: translateY(12px) !important;
+    font-family: inter;
+  }
+
+  &.item-has-focus {
+    --show-full-highlight: 0.65;
+    --highlight-background: #d4d4d4;
+    --highlight-color-valid: #343a40;
+
+    ion-label {
+      font-size: 14px;
+      color: #343a40;
+      transform: translateY(-10px) !important;
+      font-family: "inter";
+      font-style: normal;
+    }
+  }
+
+  &.item-has-value {
+    ion-label {
+      font-size: 14px;
+      color: #343a40;
+      transform: translateY(-10px) !important;
+      font-family: "inter";
+      font-style: normal;
+    }
+  }
+
+  &.item-interactive-disabled {
+    --background: #d4d4d4;
+  }
+}
+
+ion-textarea {
+  --padding-top: 3px;
+  --padding-bottom: 3px;
+  font-family: "Roboto";
+  font-style: normal;
+}
+
+/* Text area Css End */
+
+
+// textbox
+.textbox {
+  --border-color: #d4d4d4;
+  --height: 42px;
+  --min-height: 42px;
+  font-family: "Inter" !important;
+  font-style: normal;
+  color: #343a40;
+  font-size: 14px;
+
+  &.item-has-focus {
+    --highlight-color-valid: #343a40;
+    --show-full-highlight: 0.65;
+    --highlight-background: #d4d4d4;
+
+    ion-label {
+      font-size: 14px;
+      color: #343a40;
+      transform: translateY(-10px) !important;
+      font-family: "inter";
+      font-style: normal;
+    }
+  }
+
+  &.item-has-value {
+    ion-label {
+      font-size: 14px;
+      color: #343a40;
+      transform: translateY(-10px) !important;
+      font-family: "inter";
+      font-style: normal;
+    }
+
+    .textbox.item-interactive-disabled {
+      --background: #d4d4d4;
+    }
+  }
+
+  &.read-only {
+    --background: #f9f9f9;
+
+    &::part(native) {
+      --border-color: #d4d4d4;
+    }
+  }
+
+  ion-input {
+    --padding-top: 0px;
+    --padding-bottom: 0px;
+    transform: translateY(-10px);
+    font-family: "inter";
+    font-style: normal;
+  }
+
+  ion-label {
+    transform: translateY(12px);
+    font-family: "inter";
+    font-style: normal;
+  }
+}
+
+/* Dropdown Css Start */
+.dropdown {
+  --border-color: #d4d4d4;
+  --height: 42px;
+  --min-height: 42px;
+  font-family: "Inter" !important;
+  font-style: normal;
+  color: #343a40; //before label font style
+  font-size: 14px;
+
+  &.multiselect {
+    overflow: hidden;
+  }
+
+  ion-select {
+    transform: translateY(-11px);
+
+    &::part(text) {
+      width: 0px;
+    }
+  }
+
+  ion-label {
+    transform: translateY(12px);
+    transform: translateY(-10px) scale(1) !important;
+    font-family: inherit;
+  }
+
+  &::part(native) {
+    border-color: #d4d4d4;
+  }
+
+  ion-select::part(icon) {
+    // content: url("../assets/icon/Union.png");
+    width: 18px;
+    height: 8px;
+    opacity: 1;
+  }
+}
+
+.dropdown.item-has-focus,
+.dropdown.ion-focused {
+  --highlight-color-valid: #343a40;
+  --show-full-highlight: 0.65;
+  color: #343a40;
+}
+
+.dropdown.item-has-value {
+  ion-label {
+    font-size: 14px;
+    color: #343a40;
+    transform: translateY(-10px) !important;
+    font-family: inter;
+  }
+
+  ion-select {
+    transform: translateY(-13px);
+    font-family: inherit;
+  }
+}
+
+.dropdown.item-interactive-disabled {
+  --background: #d4d4d4;
+}
+
+/* Dropdown Css End */
+
+
+/*Stacked dropdown start*/
+.dropdown-stacked {
+  --border-color: #d4d4d4;
+  --height: 42px;
+  --min-height: 42px;
+  font-family: "Inter" !important;
+  font-style: normal;
+  color: #343a40; //before label font style
+  font-size: 16px;
+
+  &.multiselect {
+    overflow: hidden;
+  }
+
+  ion-select {
+    transform: translateY(-10px);
+
+    &::part(text) {
+      width: 16px;
+    }
+  }
+
+  ion-select::part(icon) {
+    // content: url("../assets/icon/Union.png");
+    width: 10px;
+    height: 8px;
+    transform: translate3d(0px, 0px, 0px);
+    opacity: 1;
+  }
+}
+
+.dropdown-stacked.item-has-focus {
+  --highlight-color-valid: #343a40;
+  --show-full-highlight: 0.65;
+
+  &::part(native) {
+    border-color: #d4d4d4;
+  }
+
+  ion-select::part(icon) {
+    transform: translate3d(0px, 0px, 0px) rotate(180deg);
+  }
+
+  ion-label {
+    color: #343a40;
+  }
+}
+
+.dropdown-stacked.item-interactive-disabled {
+  --background: #d4d4d4;
+}
+
+.dropdown-stacked.ion-focused {
+  --highlight-color-valid: #343a40;
+  --show-full-highlight: 0.65;
+
+  select-text::part(text) {
+    width: 16px;
+  }
+
+  &::part(text) {
+    width: 10px;
+  }
+}
+
+/*form dropdown stacked end*/

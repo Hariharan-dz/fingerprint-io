@@ -1,0 +1,141 @@
+<ion-content class="screen-scroll">
+  <section class="student-details-wrapper">
+    <div class="student-details-outside-wrap">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="ion-no-padding">
+            <state-stepper #admissionStateStepper>
+              <state-stepper-step *ngFor="let step of steps;" [title]="step.title">
+                <ion-icon style="pointer-events: none;" [name]="step.icon" slot="icon" #icon></ion-icon>
+              </state-stepper-step>
+            </state-stepper>
+          </ion-col>
+
+        </ion-row>
+
+        <ion-row class="heading-txt-voice-btn">
+          <ion-col size="10">
+            <div class="heading-txt">
+              <ion-label>{{activeStep.name}}</ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="2" *ngIf="activeStep.stepIndex != 0">
+            <ion-button class="voice-enable-btn" *ngIf="!textSpeechRecognitionService.isVoiceEnabled"
+              (click)="sendStudentDetails()">
+              <ion-icon name="mic"></ion-icon>
+            </ion-button>
+            <ion-button class="voice-enable-btn" *ngIf="textSpeechRecognitionService.isVoiceEnabled"
+              (click)="voiceStopBtn()">
+              <ion-icon name="stop-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-card class="ion-padding student-details-form-wrap">
+          <app-identity-scanner></app-identity-scanner>
+          <app-student-details *ngIf="activeStep.type == 'PERSONAL'" [@animation]
+            [student]="student"></app-student-details>
+          <app-student-health-details *ngIf="activeStep.type == 'HEALTH'" [@animation]
+            [student]="student"></app-student-health-details>
+          <app-parent-details *ngIf="activeStep.type == 'PARENT'" [@animation] [student]="student"></app-parent-details>
+          <app-emergency-details *ngIf="activeStep.type == 'CONTACT'" @animation
+            [student]="student"></app-emergency-details>
+          <app-sibling-details *ngIf="activeStep.type == 'SIBLING'" @animation
+            [siblings]="student.siblings"></app-sibling-details>
+          <app-school-history-details *ngIf="activeStep.type == 'SCHOOL'" @animation
+            [schoolHistories]="student.schoolHistories"></app-school-history-details>
+          <app-documents-info *ngIf="activeStep.type == 'DOCMT'" @animation [documents]="student.documents"
+            [student]="student"></app-documents-info>
+          <app-termsandconditions *ngIf="activeStep.type == 'TAC'" @animation
+            [student]="student"></app-termsandconditions>
+          <app-declaration *ngIf="activeStep.type == 'DECLARATION'" @animation [signature]="student.signature"
+            [student]="student"></app-declaration>
+          <app-preview-data *ngIf="activeStep.type == 'PREVIEW'" @animation [student]="student"></app-preview-data>
+        </ion-card>
+
+      </ion-grid>
+    </div>
+  </section>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title class="nxt-btns-wrap ion-no-padding">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button fill="outline" expand="block" (click)="previous()" class="back-button"
+              *ngIf="activeStep.stepIndex != 0">
+              <ion-label class="back-label" style="margin-left: 10px;">Back</ion-label>
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button type="submit" class="nxt-btns" fill="none" expand="block" (click)="next()">
+              <ion-label class="nxt-label">{{activeStep.stepIndex != (steps.length - 1) ? 'Next' :
+                'Submit'}}</ion-label>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-modal [isOpen]="isModuleOpen" [backdropDismiss]="false" class="ion-content-modal-popup">
+  <ng-template>
+    <ion-row class="row-wrapper">
+      <ion-col size="12" class="center-z">
+        <ion-icon style=" color: green; zoom: 4.5;" name="checkmark-circle"></ion-icon>
+      </ion-col>
+      <ion-col size="12" class="center-z">
+        <ion-label style="font-size: 20px; color: black; font-weight: 700;">
+          Thank You!
+        </ion-label>
+      </ion-col>
+      <ion-col size="12" class="center-z">
+        <ion-label style="font-size: 17px; margin: 3px 0px; color: black;">
+          Your Admission Form Has Been Submitted Successfully...
+        </ion-label>
+      </ion-col>
+      <ion-col size="12" class="center-z" *ngIf="!lastPageModalPopup">
+        <ion-button (click)="lastPageModalPopup = true">
+          <ion-label>Proceed Admission</ion-label>
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="12" class="center-z last-page" *ngIf="lastPageModalPopup" id="hide">
+        <ion-card class="last-page-card">
+          <ion-row>
+            <ion-col class="password-pin-col">
+              <ion-label>Please Enter 4 digit Admin Password</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-xs="11" size-sm="11" size-md="4" size-lg="4" size-xl="4" offset-xs="0.5" offset-sm="0.5"
+              offset-md="4" offset-lg="4" offset-xl="4">
+              <div class="pin-nr-wrapper">
+                <ion-input class="pin-number" type="password" [(ngModel)]="userPin"
+                  [ngModelOptions]="{standalone: true}" required maxLength="4">
+                </ion-input>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button class="password-submit-btn" (click)="admissionProcess()">
+                <ion-label>Submit</ion-label>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12" class="center-z" *ngIf="goToHome">
+        <ion-button (click)="backToHome()">
+          Back to Home
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+  </ng-template>
+</ion-modal>

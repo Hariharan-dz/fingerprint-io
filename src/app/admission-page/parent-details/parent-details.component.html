@@ -1,0 +1,340 @@
+<div [ngSwitch]="student.relationType">
+  <div *ngSwitchCase="'parents'">
+    <!-- Father details -->
+    <div>
+      <ion-row>
+        <ion-col>
+          <ion-toolbar class="common-toolbar-tilte ion-text-start" mode="ios">
+            <ion-title class="ion-text-start  ion-no-padding  details-title">Father
+              details<span>*</span></ion-title>
+          </ion-toolbar>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Father Name</ion-label>
+            <ion-input [(ngModel)]="student.father_name" type="text" name="father_first_name"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+            <ion-label position="floating"> Aadhar Card Number</ion-label>
+            <ion-input type="text" [(ngModel)]="student.father_aadhaar_number" name="father_aadhaar_number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item mode="md" fill="outline" class="textarea ">
+            <ion-label position="floating">Address</ion-label>
+            <ion-textarea rows="5" [(ngModel)]="student.father_address" name="father_address"></ion-textarea>
+          </ion-item>
+        </ion-col>
+
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Qualification</ion-label>
+            <ion-input type="text" [(ngModel)]="student.father_qualification" name="father_qualification"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+            <ion-label position="floating">Occupation</ion-label>
+            <ion-input type="text" [(ngModel)]="student.father_occupation" name="father_occupation"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Organization/Company</ion-label>
+            <ion-input type="text" [(ngModel)]="student.father_org" name="father_org"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+            <ion-label position="floating">Designation</ion-label>
+            <ion-input type="text" [(ngModel)]="student.father_designation" name="father_designation"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Mobile Number</ion-label>
+            <ion-input type="text" minlength="10" maxlength="10" pattern="\d{10}"
+              onkeypress=" return event.charCode>=48 && event.charCode<=57" [(ngModel)]="student.residence_phone"
+              name="residence_phone"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+            <ion-label position="floating">WhatsApp Number</ion-label>
+            <ion-input type="text" minlength="10" maxlength="10" pattern="\d{10}"
+              onkeypress=" return event.charCode>=48 && event.charCode<=57" [(ngModel)]="student.father_whatsapp_number"
+              name="father_whatsapp_number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="text" [(ngModel)]="student.parent_email" name="parent_email"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+            <ion-label position="floating">Annual Income (Rs)</ion-label>
+            <ion-input type="text" [(ngModel)]="student.parent_income" name="parent_income"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Office Contact Number</ion-label>
+            <ion-input type="text" minlength="10" maxlength="10" pattern="\d{10}"
+              onkeypress=" return event.charCode>=48 && event.charCode<=57"
+              [(ngModel)]="student.father_office_contact_number"
+              name="student.father_office_contact_number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+            <ion-label position="floating">Primary Contact Number</ion-label>
+            <ion-input type="text" minlength="10" maxlength="10" pattern="\d{10}"
+              onkeypress=" return event.charCode>=48 && event.charCode<=57"
+              [(ngModel)]="student.father_primary_contect_number" name="father_primary_contect_number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+    <!-- Mother details -->
+    <div>
+      <ion-row>
+        <ion-col>
+          <ion-toolbar class="common-toolbar-tilte ion-text-start" mode="ios">
+            <ion-title class="ion-text-start  ion-no-padding  details-title">Mother
+              details<span>*</span></ion-title>
+          </ion-toolbar>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Mother Name</ion-label>
+            <ion-input type="text" [(ngModel)]="student.mother_name" name="mother_first_name"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+            <ion-label position="floating"> Aadhar Card Number </ion-label>
+            <ion-input type="text" [(ngModel)]="student.mother_aadhaar_number" name="mother_aadhaar_number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item mode="md" fill="outline" class="textarea ">
+            <ion-label position="floating">Address</ion-label>
+            <ion-textarea rows="5" [(ngModel)]="student.mother_address" name="mother_address"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Qualification</ion-label>
+            <ion-input type="text" [(ngModel)]="student.mother_qualification" name="mother_qualification"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+            <ion-label position="floating">Occupation</ion-label>
+            <ion-input type="text" [(ngModel)]="student.mother_occupation" name="mother_occupation"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Organization/Company</ion-label>
+            <ion-input type="text" [(ngModel)]="student.mother_org" name="mother_org"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+            <ion-label position="floating">Designation</ion-label>
+            <ion-input type="text" [(ngModel)]="student.mother_designation" name="mother_designation"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Mobile Number</ion-label>
+            <ion-input type="text" minlength="10" maxlength="10" pattern="\d{10}"
+              onkeypress=" return event.charCode>=48 && event.charCode<=57" [(ngModel)]="student.mother_mobile"
+              name="mother_mobile"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+            <ion-label position="floating">WhatsApp Number</ion-label>
+            <ion-input type="text" minlength="10" maxlength="10" pattern="\d{10}"
+              onkeypress=" return event.charCode>=48 && event.charCode<=57" [(ngModel)]="student.mother_whatsapp_number"
+              name="mother_whatsapp_number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="text" [(ngModel)]="student.mother_email" name="mother_email"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+            <ion-label position="floating">Annual Income (Rs)</ion-label>
+            <ion-input type="text" [(ngModel)]="student.mother_income" name="mother_income"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Office Contact Number</ion-label>
+            <ion-input type="text" minlength="10" maxlength="10" pattern="\d{10}"
+              onkeypress=" return event.charCode>=48 && event.charCode<=57"
+              [(ngModel)]="student.mother_office_contact_number" name="mother_office_contact_number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+            <ion-label position="floating">Primary Contact Number</ion-label>
+            <ion-input type="text" minlength="10" maxlength="10" pattern="\d{10}"
+              onkeypress=" return event.charCode>=48 && event.charCode<=57"
+              [(ngModel)]="student.mother_primary_contect_number" name="mother_primary_contect_number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+  <!-- guardian -->
+  <div *ngSwitchCase="'guardian'" class="parent-form-container">
+    <ion-row>
+      <ion-col>
+        <ion-toolbar class="common-toolbar-tilte ion-text-start" mode="ios">
+          <ion-title class="ion-text-start  ion-no-padding  details-title">Guardian
+            details<span>*</span></ion-title>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=" 6">
+        <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+          <ion-label position="floating">First Name</ion-label>
+          <ion-input type="text" [(ngModel)]="student.guardian_first_name" name="guardian_first_name"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+          <ion-label position="floating">Last Name</ion-label>
+          <ion-input type="text" [(ngModel)]="student.guardian_last_name" name="guardian_last_name"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item mode="md" fill="outline" class="textarea">
+          <ion-label position="floating">Address</ion-label>
+          <ion-textarea [(ngModel)]="student.guardian_address" name="guardian_address">
+          </ion-textarea>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+          <ion-label position="floating">Qualification</ion-label>
+          <ion-input type="text" [(ngModel)]="student.guardian_qualification" name="guardian_qualification"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+          <ion-label position="floating">Occupation</ion-label>
+          <ion-input type="text" [(ngModel)]="student.guardian_occupation" name="guardian_occupation"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+          <ion-label position="floating">Organization/Company</ion-label>
+          <ion-input type="text" [(ngModel)]="student.guardian_org" name="guardian_org"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+          <ion-label position="floating">Designation</ion-label>
+          <ion-input type="text" [(ngModel)]="student.guardian_designation" name="guardian_designation"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+          <ion-label position="floating">Mobile Number</ion-label>
+          <ion-input type="text" minlength="10" maxlength="10" pattern="\d{10}"
+            onkeypress=" return event.charCode>=48 && event.charCode<=57" [(ngModel)]="student.guardian_mobile"
+            name="guardian_mobile"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+          <ion-label position="floating">WhatsApp Number</ion-label>
+          <ion-input type="text" minlength="10" maxlength="10" pattern="\d{10}"
+            onkeypress=" return event.charCode>=48 && event.charCode<=57" [(ngModel)]="student.guardian_whatsapp_number"
+            name="guardian_whatsapp_number"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="text" [(ngModel)]="student.guardian_email" name="guardian_email"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+          <ion-label position="floating">Annual Income (Rs)</ion-label>
+          <ion-input type="text" [(ngModel)]="student.guardian_income" name="guardian_income"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+          <ion-label position="floating">Office Contact Number</ion-label>
+          <ion-input type="text" minlength="10" maxlength="10" pattern="\d{10}"
+            onkeypress=" return event.charCode>=48 && event.charCode<=57"
+            [(ngModel)]="student.guardian_office_contect_number" name="guardian_office_contect_number"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+          <ion-label position="floating">Primary Contact Number</ion-label>
+          <ion-input type="text" minlength="10" maxlength="10" pattern="\d{10}"
+            onkeypress=" return event.charCode>=48 && event.charCode<=57"
+            [(ngModel)]="student.guardian_primary_contect_number" name="guardian_primary_contect_number"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>

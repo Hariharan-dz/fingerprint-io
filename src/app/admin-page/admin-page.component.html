@@ -1,0 +1,282 @@
+<ion-content *ngIf="isAdminValidationSuccessfull">
+  <div class="container-wrapper">
+    <ion-card>
+      <div class="reset-password">
+        <ion-list class="ion-no-padding">
+          <ion-item lines="full" mode="ios">
+            <ion-label>Reset Password</ion-label>
+            <ion-button id="resetPassword">
+              <ion-label class="right-btn-label">Change</ion-label>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div class="onedrive-cred-change">
+        <ion-list class="ion-no-padding">
+          <ion-item lines="full" mode="ios">
+            <ion-label>One-Drive Settings</ion-label>
+            <ion-button id="oneDriveSetting">
+              <ion-label class="right-btn-label">Change</ion-label>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div class="inapp-cred-change">
+        <ion-list class="ion-no-padding">
+          <ion-item lines="full" mode="ios">
+            <ion-label>ERP Tool Configuration</ion-label>
+            <ion-button id="inappsetting">
+              <ion-label class="right-btn-label">Change</ion-label>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div class="email-to-change">
+        <ion-list class="ion-no-padding">
+          <ion-item lines="full" mode="ios">
+            <ion-label>ERP Notification Configuration</ion-label>
+            <ion-button id="emailsentto">
+              <ion-label class="right-btn-label">Change</ion-label>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </div>
+
+
+      <div class="developer-options">
+        <ion-list class="ion-no-padding">
+          <ion-item lines="none" mode="ios">
+            <ion-label>Enable Developer Options</ion-label>
+            <ion-checkbox class="custom-checkbox" [(ngModel)]="isDeveloperOptionEnabled"
+              (ionChange)="developerOptions()"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </div>
+
+    </ion-card>
+  </div>
+</ion-content>
+
+<!-- password changes -->
+<ion-modal trigger="resetPassword" *ngIf="isAdminValidationSuccessfull" class="reset-password-modalup"
+  backdropDismiss="false">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Reset Password</ion-title>
+        <ion-icon name="close-outline" slot="end" class="close-symbol-icon"
+          (click)="modalCtrl.dismiss(); password = {};"></ion-icon>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-item fill="outline" mode="md">
+        <ion-label position="floating">Old Password</ion-label>
+        <ion-input [type]="!hideShowPasswordObject.oldPassword ? 'password' : 'text'" [(ngModel)]="password.old_password"
+          maxlength="4"></ion-input>
+        <ion-icon name="eye-outline" slot="end" *ngIf="!hideShowPasswordObject.oldPassword" [ngClass]="!password.old_password ? 'visiblity-none' : '' "
+          (click)="passwordShowHide('oldPassword')"></ion-icon>
+        <ion-icon name="eye-off-outline" slot="end" *ngIf="hideShowPasswordObject.oldPassword" [ngClass]="!password.old_password ? 'visiblity-none' : '' "
+          (click)="passwordShowHide('oldPassword')"></ion-icon>
+      </ion-item>
+      <ion-item fill="outline" mode="md">
+        <ion-label position="floating">New Password</ion-label>
+        <ion-input [type]="!hideShowPasswordObject.newPassword ? 'password' : 'text'" [(ngModel)]="password.new_password"
+          maxlength="4"></ion-input>
+        <ion-icon name="eye-outline" slot="end" *ngIf="!hideShowPasswordObject.newPassword" [ngClass]="!password.new_password ? 'visiblity-none' : '' "
+          (click)="passwordShowHide('newPassword')"></ion-icon>
+        <ion-icon name="eye-off-outline" slot="end" *ngIf="hideShowPasswordObject.newPassword" [ngClass]="!password.new_password ? 'visiblity-none' : '' "
+          (click)="passwordShowHide('newPassword')"></ion-icon>
+      </ion-item>
+      <ion-item fill="outline" mode="md">
+        <ion-label position="floating">Confirm new Password</ion-label>
+        <ion-input [type]="!hideShowPasswordObject.confirmPassword ? 'password' : 'text' " [(ngModel)]="password.confirm_new_password"
+          maxlength="4"></ion-input>
+        <ion-icon name="eye-outline" slot="end" *ngIf="!hideShowPasswordObject.confirmPassword" [ngClass]="!password.confirm_new_password ? 'visiblity-none' : '' "
+          (click)="passwordShowHide('confirmPassword')"></ion-icon>
+        <ion-icon name="eye-off-outline" slot="end" *ngIf="hideShowPasswordObject.confirmPassword"
+          [ngClass]="!password.confirm_new_password ? 'visiblity-none' : '' " (click)="passwordShowHide('confirmPassword')"></ion-icon>
+      </ion-item>
+
+      <ion-item lines="none" class="save-changes-btn1">
+        <div class="btn-wrap">
+          <ion-button (click)="updateNewPassword()">
+            <ion-label>Save Changes</ion-label>
+          </ion-button>
+        </div>
+      </ion-item>
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- one drive credential setting changes -->
+<ion-modal trigger="oneDriveSetting" *ngIf="isAdminValidationSuccessfull" class="one-drive-modalup"
+  backdropDismiss="false" (willPresent)="getDataFromStorage()">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>One Drive Credentials</ion-title>
+        <ion-icon name="close-outline" slot="end" class="close-symbol-icon" (click)="modalCtrl.dismiss();"></ion-icon>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-item fill="outline" mode="md">
+        <ion-label position="floating">Client ID</ion-label>
+        <ion-input type="text" [(ngModel)]="oneDriveCredentials.client_id"></ion-input>
+      </ion-item>
+      <ion-item fill="outline" mode="md">
+        <ion-label position="floating">Client Secret ID</ion-label>
+        <ion-input [type]="!hideShowPasswordObject.secretIdPasswordShowHide ? 'password' : 'text' "
+          [(ngModel)]="oneDriveCredentials.secret_id"></ion-input>
+        <ion-icon name="eye-outline" slot="end" *ngIf="!hideShowPasswordObject.secretIdPasswordShowHide"
+          [ngClass]="!oneDriveCredentials.secret_id ? 'visiblity-none' : '' " (click)="passwordShowHide('secretIdPasswordShowHide')"></ion-icon>
+        <ion-icon name="eye-off-outline" slot="end" *ngIf="hideShowPasswordObject.secretIdPasswordShowHide"
+          [ngClass]="!oneDriveCredentials.secret_id ? 'visiblity-none' : '' " (click)="passwordShowHide('secretIdPasswordShowHide')"></ion-icon>
+      </ion-item>
+      <ion-item fill="outline" mode="md">
+        <ion-label position="floating">Tenant ID</ion-label>
+        <ion-input type="text" [(ngModel)]="oneDriveCredentials.tenant_id"></ion-input>
+      </ion-item>
+      <ion-item fill="outline" mode="md">
+        <ion-label position="floating">Object ID</ion-label>
+        <ion-input type="text" [(ngModel)]="oneDriveCredentials.object_id"></ion-input>
+      </ion-item>
+      <ion-item fill="outline" mode="md">
+        <ion-label position="floating">Folder Path</ion-label>
+        <ion-input type="text" [(ngModel)]="oneDriveCredentials.folder_path"></ion-input>
+      </ion-item>
+
+
+      <ion-item lines="none" class="save-changes-btn1">
+        <div class="btn-wrap">
+          <ion-button (click)="updateOneDriveCredential()">
+            <ion-label>Update Details</ion-label>
+          </ion-button>
+        </div>
+      </ion-item>
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- ERP tool config credentials -->
+<ion-modal trigger="inappsetting" *ngIf="isAdminValidationSuccessfull" class="in-app-modalup" backdropDismiss="false" (willPresent)="getDataFromStorage()">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>ERP Tool Configuration</ion-title>
+        <ion-icon name="close-outline" slot="end" class="close-symbol-icon" (click)="modalCtrl.dismiss();"></ion-icon>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-item fill="outline" mode="md">
+        <ion-label position="floating">URL</ion-label>
+        <ion-input type="text" [(ngModel)]="inAppCredentials.site_url"></ion-input>
+      </ion-item>
+      <ion-item fill="outline" mode="md">
+        <ion-label position="floating">Username</ion-label>
+        <ion-input type="text" [(ngModel)]="inAppCredentials.user_name"></ion-input>
+      </ion-item>
+      <ion-item fill="outline" mode="md">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input [type]="!hideShowPasswordObject.erpToolConfigPasswordShowHide ? 'password' : 'text' "
+          [(ngModel)]="inAppCredentials.password"></ion-input>
+        <ion-icon name="eye-outline" slot="end" *ngIf="!hideShowPasswordObject.erpToolConfigPasswordShowHide"
+          [ngClass]="!password ? 'visiblity-none' : '' " (click)="passwordShowHide('erpToolConfigPasswordShowHide')"></ion-icon>
+        <ion-icon name="eye-off-outline" slot="end" *ngIf="hideShowPasswordObject.erpToolConfigPasswordShowHide"
+          [ngClass]="!password ? 'visiblity-none' : '' " (click)="passwordShowHide('erpToolConfigPasswordShowHide')"></ion-icon>
+      </ion-item>
+      <ion-item fill="outline" mode="md">
+        <ion-label position="floating">Add Student URL</ion-label>
+        <ion-input type="text" [(ngModel)]="inAppCredentials.add_student_url"></ion-input>
+      </ion-item>
+
+
+      <ion-item lines="none" class="save-changes-btn1">
+        <div class="btn-wrap">
+          <ion-button (click)="updateInappCredential()">
+            <ion-label>Update Details</ion-label>
+          </ion-button>
+        </div>
+      </ion-item>
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- ERP email sent contact alterations credentials -->
+<ion-modal trigger="emailsentto" *ngIf="isAdminValidationSuccessfull" class="emailsentto-modalup"
+  backdropDismiss="false" (willPresent)="getDataFromStorage()">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>ERP Notification Configuration</ion-title>
+        <ion-icon name="close-outline" slot="end" class="close-symbol-icon" (click)="modalCtrl.dismiss();"></ion-icon>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-item fill="outline" mode="md" *ngFor="let emailid of emailTo; let ind = index">
+        <ion-label position="floating">Email To address {{ ind + 1 }}</ion-label>
+        <ion-input type="email" [(ngModel)]="emailid.email_to"></ion-input>
+        <ion-icon name="close-outline" slot="end" *ngIf="emailTo.length > 1" (click)="deleteEmailAddress(ind)"></ion-icon>
+      </ion-item>
+      <ion-item lines="none">
+        <div class="email-add-btn">
+          <ion-button class="ion-no-margin" (click)="addEmailID()">
+            <ion-icon name="add-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-item>
+
+      <ion-item lines="none" class="save-changes-btn1">
+        <div class="btn-wrap">
+          <ion-button (click)="updateEmailToAddress()">
+            <ion-label>Update Details</ion-label>
+          </ion-button>
+        </div>
+      </ion-item>
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<ion-modal [isOpen]="isAdminModelOpen" class="admin-password-popup" backdropDismiss="false">
+  <ng-template>
+    <div>
+      <ion-grid style="text-align: center;" class="grid-container">
+        <ion-row>
+          <ion-col class="school-logo">
+            <ion-img src="../../assets/icon/school-logo.png"></ion-img>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="password-pin-col">
+            <ion-label>Please Enter 4 digit Admin Password</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size-xs="11" size-sm="11" size-md="4" size-lg="4" size-xl="4" offset-xs="0.5" offset-sm="0.5"
+            offset-md="4" offset-lg="4" offset-xl="4">
+            <div class="pin-nr-wrapper">
+              <ion-input class="pin-number" [type]="!showPassword ? 'password' : 'text'" [(ngModel)]="userPin" [ngModelOptions]="{standalone: true}"
+                required maxLength="4">
+              </ion-input>
+              <ion-icon name="eye-outline" *ngIf="!showPassword" [ngClass]="!userPin ? 'visiblity-none' : '' " (click)="passwordShowHide('ADMIN_PIN')"></ion-icon>
+                <ion-icon name="eye-off-outline" *ngIf="showPassword" [ngClass]="!userPin ? 'visiblity-none' : '' " (click)="passwordShowHide('ADMIN_PIN')"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button class="password-submit-btn">
+              <ion-label (click)="adminPasswordValidation()">Submit</ion-label>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ng-template>
+</ion-modal>

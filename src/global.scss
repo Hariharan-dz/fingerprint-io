@@ -1,0 +1,292 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+* {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.popover-wide {
+  box-shadow: none !important;
+  border-radius: 0px;
+  --box-shadow: 0px 2px 4px rgb(0 0 0 / 20%);
+  --min-height: auto;
+  --max-height: 250px;
+
+  ion-list {
+    border-radius: 0px;
+    padding: 0px;
+  }
+
+  .item-radio-checked {
+    --background-focused: #f6f6f6;
+    --color: var(--ion-color-primary) !important;
+    --background: #f6f6f6;
+    font-weight: 500;
+    --background-focused: var(--ion-color-primary) !important;
+    --background-hover: var(--ion-color-primary) !important;
+    --background-focused-opacity: 0.12 !important;
+    --background-hover-opacity: 0.18 !important;
+
+  }
+
+  .sc-ion-select-popover-md {
+    box-shadow: none !important;
+    --background: #f6f6f6;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    --background-focused: var(--ion-color-primary) !important;
+    --background-hover: var(--ion-color-primary) !important;
+    --background-focused-opacity: 0.12 !important;
+    --background-hover-opacity: 0.18 !important;
+    /* identical to box height */
+    --checkmark-color: var(--ion-color-secondary);
+  }
+
+  ion-item {
+    border-bottom: 0.2px solid #cecece;
+  }
+
+  ion-item:last-child {
+    border-bottom: none;
+  }
+}
+
+.m-r-5 {
+  margin-right: 5px !important;
+}
+
+.m-l-5 {
+  margin-left: 5px !important;
+}
+
+.add-button {
+  --background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+  text-transform: capitalize;
+  font-size: 13px;
+}
+
+.delete-button {
+  float: right;
+  --border-color: var(--ion-primary-color);
+  color: var(--ion-primary-color);
+
+  ion-label {
+    text-transform: capitalize;
+  }
+}
+
+.border-line {
+  border-top: 1.2px var(--ion-primary-color) solid;
+  margin-inline-start: 2px;
+  margin-inline-end: 2px;
+}
+
+.subtitle {
+  padding-inline: 0px;
+  font-family: inter;
+  font-size: 18px;
+  color: var(--ion-txt-color-B);
+}
+
+// .alert-title.sc-ion-alert-md{
+//   text-align: center;
+//   font-weight: 600;
+// }
+
+// .alert-wrapper.sc-ion-alert-md {
+//   border-radius: 10px;
+// }
+
+// .alert-button-group.sc-ion-alert-md {
+//   justify-content: space-around;
+// }
+
+// .alert-button.sc-ion-alert-md {
+//   --border-color: var(--ion-primary-color);
+//   color: var(--ion-primary-color);
+//   border: solid 1px;
+//   border-radius: 3px;
+//   padding: 0px 20px;
+// }
+
+
+ion-alert.custom-alert-style {
+  --backdrop-opacity: 0.1;
+  --min-width: 336px;
+  --width: auto;
+  --min-height: 100px;
+  --height: auto;
+  --max-height: 100%;
+
+  .warning-wraper {
+    background: #ffe9d9;
+    padding: 8px 10px;
+    border-radius: 0px 8px 8px 0px;
+    border-left: 5px solid orange;
+    margin: 16px;
+
+    .warning-title-wrapper {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      color: #c46565;
+
+      .icon-color {
+        font-size: 24px;
+      }
+
+      .warning-title {
+        margin-left: 6px;
+        font-weight: 600;
+        font-size: 14px;
+      }
+    }
+
+    .warning-content {
+      margin: 4px 0px 0px 30px;
+      word-break: break-word;
+      font-size: 12px;
+      text-align: start;
+      color: #c46565;
+
+      .bold-text {
+        font-weight: bold;
+      }
+    }
+  }
+
+  ion-backdrop {
+    cursor: auto;
+  }
+
+  .alert-wrapper.sc-ion-alert-md {
+    border-radius: 18px;
+
+  }
+
+  button.alert-button.alert-button-confirm {
+    background: linear-gradient(to left, var(--ion-primary-color), var(--ion-secondary-color));
+    color: white;
+    padding: 10px 40px 10px 40px;
+    height: 36px;
+    text-transform: none;
+    border-radius: 3px;
+    // font-family: "Roboto" !important;
+    font-weight: 500;
+    cursor: pointer;
+    font-style: normal;
+    margin-left: 8px;
+  }
+
+  button.alert-button.alert-button-cancel {
+    background: white;
+    color: var(--ion-primary-color);
+    padding: 10px 40px 10px 40px;
+    height: 36px;
+    text-transform: none;
+    margin: 0;
+    font-weight: 400 !important;
+    border: 1px solid var(--ion-primary-color);
+
+  }
+
+  .alert-title.sc-ion-alert-md {
+    color: var(--ion-txt-color-B);
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    font-family: "inter";
+    font-style: normal;
+  }
+
+  .alert-sub-title.sc-ion-alert-md {
+    color: var(--ion-txt-color-B);
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    font-family: "inter";
+    font-style: normal;
+    margin-top: 11px;
+  }
+
+  .alert-button-group {
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+  }
+}
+
+//toaster-style-start
+.toaster-style {
+  --background: #ffffff;
+  --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --color: #343a40;
+  --min-width: 310px;
+  --max-width: 310px;
+  --min-height: 52px;
+  --max-height: 52px;
+  --start: left;
+  transform: translateY(-56px) !important;
+}
+
+ion-toast::part(icon) {
+  background: var(--ion-color-primary);
+  color: white;
+  border-radius: 14px;
+}
+
+.cancel-toaster-style {
+  --background: #ffffff;
+  --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --color: #343a40;
+  --min-width: 310px;
+  --max-width: 310px;
+  --min-height: 52px;
+  --max-height: 52px;
+  --start: left;
+  transform: translateY(-56px) !important;
+}
+
+ion-toast.cancel-toaster-style::part(icon) {
+  background: red;
+  color: white;
+  border-radius: 14px;
+}
+
+//toaster ends
+
+.mandatory-field {
+  color: #bf4d4d;
+  font-weight: 600;
+}

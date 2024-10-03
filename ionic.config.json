@@ -1,0 +1,8 @@
+{
+  "name": "Genius School Admission",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,24 @@
+{
+    "/api/*": {
+        "target": "https://graph.microsoft.com",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/auth/*": {
+        "target": "https://login.microsoftonline.com",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/auth/": "/"
+        }
+    },
+    "/zoho/*": {
+        "target": "https://accounts.zoho.in",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/zoho/": "/"
+        }
+    }
+
+}

@@ -1,0 +1,205 @@
+<div class="ion-content">
+  <ion-row class="student-details-form-wrap">
+    <ion-col size="6" class="ion-no-padding">
+      <ion-row>
+        <ion-col size="12">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">First Name<span class="mandatory-field"> *</span></ion-label>
+            <ion-input type="text" [(ngModel)]="student.first_name" name="first_name"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input type="text" [(ngModel)]="student.last_name" name="last_name"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="8">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">DOB<span class="mandatory-field"> *</span></ion-label>
+            <ion-input type="date" placeholder="MM/DD/YYYY" [(ngModel)]="student.dob"
+              (ionChange)="calculateStudentAge(student.dob, student, 'age')" name="dob"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating">Age</ion-label>
+            <ion-input type="text" [(ngModel)]="student.age" name="age" [disabled]="true"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item mode="md" fill="outline" class="dropdown ion-margin-bottom m-r-5">
+            <ion-label position="floating">Gender<span class="mandatory-field"> *</span></ion-label>
+            <ion-select class="ion-no-padding " placeholder="--Select--" name="gender" interface="popover"
+              interfaceOptions="popover-wide" [(ngModel)]="student.gender"
+              (ionChange)="student.gender_display_value = studentDetailsService.getDropDownText($event)">
+              <ion-select-option value="M">Male</ion-select-option>
+              <ion-select-option value="F">Female</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item mode="md" fill="outline" class="dropdown m-r-5">
+            <ion-label position="floating">Admission for Class/Standard<span class="mandatory-field"> *</span></ion-label>
+            <ion-select class="ion-no-padding " placeholder="--Select--" interface="popover" interfaceOptions="popover-wide"
+              [(ngModel)]="student.master_class_id" name="master_class_id"
+              (ionChange)="student.standard_display_value = studentDetailsService.getDropDownText($event)">
+              <ion-select-option value="">Select Class</ion-select-option>
+              <ion-select-option value="1">Play Group</ion-select-option>
+              <ion-select-option value="2">Nursery</ion-select-option>
+              <ion-select-option value="3">LKG</ion-select-option>
+              <ion-select-option value="4">UKG</ion-select-option>
+              <ion-select-option value="5">Class 1</ion-select-option>
+              <ion-select-option value="6">Class 2</ion-select-option>
+              <ion-select-option value="7">Class 3</ion-select-option>
+              <ion-select-option value="8">Class 4</ion-select-option>
+              <ion-select-option value="9">Class 5</ion-select-option>
+              <ion-select-option value="10">Class 6</ion-select-option>
+              <ion-select-option value="11">Class 7</ion-select-option>
+              <ion-select-option value="12">Class 8</ion-select-option>
+              <ion-select-option value="13">Class 9</ion-select-option>
+              <ion-select-option value="14">Class 10</ion-select-option>
+              <ion-select-option value="15">Class 11</ion-select-option>
+              <ion-select-option value="16">Class 12</ion-select-option>
+              <ion-select-option value="17">Others</ion-select-option>
+            </ion-select>
+          </ion-item>
+          
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+            <ion-label position="floating"> Aadhar Number </ion-label>
+            <ion-input type="text" [(ngModel)]="student.aadhar_number" name="aadhar_number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <ion-col size="6">
+      <ion-row class="take-photo m-l-5">
+        <ion-col>
+          <div class="img-wrap">
+            <ion-img *ngIf="student.photo === null" src="../../../assets/icon/no-img-icon.png"
+              class="before-upload"></ion-img>
+            <ion-img *ngIf="student.photo != null" [src]="student.photo.dataUrl" alt="Photo"
+              class="after-upload"></ion-img>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="ion-no-padding upload-btn-wrap">
+          <ion-button class="ion-no-padding upload-btn" (click)="takePhoto()">
+            <ion-label *ngIf="student.photo == null">Take Photo</ion-label>
+            <ion-label *ngIf="student.photo != null">Re-Take Photo</ion-label>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+        <ion-label position="floating"> Nationality </ion-label>
+        <ion-input type="text" [(ngModel)]="student.nationality" name="nationality"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+        <ion-label position="floating"> Religion </ion-label>
+        <ion-input type="text" [(ngModel)]="student.religion" name="religion"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+        <ion-label position="floating"> Caste </ion-label>
+        <ion-input type="text" [(ngModel)]="student.caste" name="caste"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+        <ion-label position="floating"> OBC/SC/ST/Others </ion-label>
+        <ion-input type="text" [(ngModel)]="student.sub_caste" name="sub_caste"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+        <ion-label position="floating"> Blood Group </ion-label>
+        <ion-input type="text" [(ngModel)]="student.blood_group" name="blood_group"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+        <ion-label position="floating">Place Of Birth</ion-label>
+        <ion-input type="text" [(ngModel)]="student.birth_place" name="birth_place"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-r-5">
+        <ion-label position="floating"> Mother Tongue </ion-label>
+        <ion-input type="text" [(ngModel)]="student.mother_tongue" name="mother_tongue"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+        <ion-label position="floating"> Other Languages Known </ion-label>
+        <ion-input type="text" [(ngModel)]="student.languages" name="languages"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-item mode="md" fill="outline" class="dropdown m-r-5">
+        <ion-label position="floating">Bus Transportation needed</ion-label>
+        <ion-select class="ion-no-padding " placeholder="--Select--" name="transport" interface="popover"
+          interfaceOptions="popover-wide" [(ngModel)]="student.transport_status" name="transport_status"
+          (ionChange)="student.transport_status_display_value = studentDetailsService.getDropDownText($event)">
+          <ion-select-option value="1">Yes</ion-select-option>
+          <ion-select-option value="2">No</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+        <ion-label position="floating"> Preferred Bus pickup point </ion-label>
+        <ion-input type="text" [(ngModel)]="student.bus_pickup" name="bus_pickup"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-item mode="md" fill="outline" class="textarea ">
+        <ion-label position="floating">Address</ion-label>
+        <ion-textarea rows="5" [(ngModel)]="student.residence_address" name="residence_address"></ion-textarea>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item fill="outline" mode="md" class="textbox ion-margin-bottom m-l-5">
+        <ion-label position="floating"> Pincode </ion-label>
+        <ion-input type="text" minlength="6" maxlength="6" pattern="\d{6}"
+          onkeypress="return event.charCode>=48 && event.charCode<=57" [(ngModel)]="student.pincode"
+          name="pincode"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+</div>
